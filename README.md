@@ -1,5 +1,4 @@
-![](media/image1.png){width="1.7170450568678914in"
-height="1.0112620297462818in"}
+
 
 +-----------------------------------------------------------+----------+
 | > Relatório                                               |          |
@@ -15,7 +14,7 @@ height="1.0112620297462818in"}
 | Autoria de: Rodrigo Galuppo Russo, 200040 TGPSI20/02      |          |
 +-----------------------------------------------------------+----------+
 
-: Tabela do layout
+
 
 # Table of Contents {#table-of-contents .TOC-Heading}
 
@@ -101,9 +100,7 @@ vídeo e para transmitir os comandos do cliente ao servidor.
 
 #### **RaspberryPi**
 
-![Raspberry Pi -- Wikipédia, a enciclopédia
-livre](media/image2.jpeg){width="5.413223972003499in"
-height="3.185415573053368in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/f1b060e4-b088-4f9a-a45b-ebe12235e9e5)
 
 A RaspberryPi é um microcomputador completo, com todos os componentes em
 uma única placa. Nela há processador, placa de vídeo, entradas USB, HDMI

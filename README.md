@@ -99,19 +99,14 @@ ser o host do servidor e da aplicação web do projeto.
 
 #### **Camera USB**
 
-![Webcam Camera Usb Full Hd 1080P Com Microfone Visão 360° em Promoção
-\| Ofertas na Americanas](media/image3.jpeg){width="4.833333333333333in"
-height="4.833333333333333in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/cc99a172-70eb-4862-a654-4e77ac2738e7)
 
 As câmaras usadas no projeto são duas câmaras simples de uso pessoal,
 com conectores USB que são usadas para transmitir a imagem do sistema de
 segurança.
 
 #### **BreadBoard Mini**
-
-![Breadboard - Mini Modular (White) - PRT-12043 - SparkFun
-Electronics](media/image4.jpeg){width="3.931372484689414in"
-height="2.9208005249343834in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/a4438d17-b8e0-4fd9-bbea-58431407aa6a)
 
 As breadboards ou placas de ensaio são placas com furos e conexões
 condutoras, usadas para fazer a montagem de projetos sem a necessidade
@@ -119,8 +114,7 @@ de soldar os fios.
 
 #### **Arduino**
 
-![Arduino Portugal](media/image5.jpeg){width="4.980391513560805in"
-height="3.854129483814523in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/df0f6cb6-4040-4553-8222-1e969e5f6915)
 
 O arduino é uma plataforma de prototipagem eletrónica criada em 2005,
 com a ideia de promover o desenvolvimento de controlo de sistemas
@@ -134,19 +128,14 @@ os componentes, permitindo o controle dos mesmos pela RaspberryPi.
 
 #### **Cabos de Energia**
 
-![Cabos para ligação arduino macho - fêmea \| Electrónica,
-electricidade, gadgets,
-componentes](media/image6.jpeg){width="3.5714468503937007in"
-height="3.215685695538058in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/0c5a68ac-812e-4ca9-8134-cee9e06e0f1d)
 
 São cabos usados para transmitir energia das portas do Arduino aos
 componentes.
 
 #### **Motores Servo**
 
-![Servo Motor SG90 9g Tower
-Pro](media/image7.jpeg){width="3.735294181977253in"
-height="3.0490201224846896in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b469fc62-cf03-406e-8bd1-4025e53fd79b)
 
 São motores usados para realizar movimentos rotacionais, que podem ser
 programáveis com o Arduino.
@@ -156,9 +145,7 @@ comandos do utilizador.
 
 #### **Sensor de Presença**
 
-![Sensor de Presença PIR - HC-SR501 - Sensores para Ambientes -
-RoboCore](media/image8.png){width="3.3333333333333335in"
-height="3.088234908136483in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/e6283f4d-acac-44fd-b4e9-2625db97b6f9)
 
 Serão usados no projeto para mover as camaras automaticamente ou com
 comandos do utilizador.
@@ -189,13 +176,11 @@ aplicação cliente.
 
 ### Esquema do Projeto
 
-![](media/image9.png){width="5.583333333333333in"
-height="2.7916666666666665in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b2829e6a-55ce-497b-bc98-5aca1572c1b0)
 
 ### Montagem dos componentes e do projeto
 
-![](media/image10.png){width="6.927083333333333in"
-height="4.286132983377078in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/f1181cb5-0e97-412a-9798-ec6c3a68ff47)
 
 -   1 Montar a estrutura base e rotatória das duas camaras
 
@@ -210,31 +195,32 @@ height="4.286132983377078in"}
 -   6 ligar os fios dos servos no arduino pela breadboard e os fios do
     sensor PIR
 
-![](media/image11.png){width="6.72701990376203in" height="5.03125in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/18ccd788-8338-4644-ad1d-7da2ab50875d)
 
 ### Como usar a aplicação
 
-![](media/image12.png){width="5.0in" height="3.5625in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/58dc8f40-8e84-4a63-838b-e5958978d73a)
 
 Uma vez que tudo está montado, é preciso aceder a linha de comando da
 RaspberryPi para executar o arquivo "app.py" e carregar o servidor da
 aplicação.
 
-![](media/image13.png){width="5.0in" height="2.8229166666666665in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/22da7c0c-e80f-4751-98b7-1cdb84f8cef4)
+
 
 Depois deve-se aceder ao terminal da máquina cliente e executar o
 comando "yarn start" no diretório do projeto
 
-![](media/image14.png){width="6.402639982502187in"
-height="4.041666666666667in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b755c71e-afe3-4bd5-b159-d7b990f9fbcf)
+
 
 Então é carregada a aplicação cliente no browser. Para mover a camara
 basta clicar nos botões com a respetiva direção e para aceder as fotos
 da camara basta clicar no botão "Images". E assim que é detetada uma
 face, é salva uma foto.
 
-![](media/image15.png){width="6.2345680227471565in"
-height="5.260416666666667in"}
+![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b43336e2-9b71-440a-b116-94e4e579802a)
+
 
 As fotos então são mostradas em uma lista e é possível vê-las clicando
 em seu link.
@@ -247,8 +233,7 @@ A aplicação segue o formato padrão de aplicações criadas com o framework
 ReactJs, uma vez que foi seguida a estrutura recomendada pela própria
 documentação, usando a cli com o comando "npx create-react-app\".
 
-![](media/image16.png){width="2.76126312335958in"
-height="5.822916666666667in"}
+![Uploading image.png…]()
 
 Sendo que nos diretório public estão os arquivos estáticos e o html
 principal que carregará os arquivos JavaScript que estão com a extensão

@@ -3,7 +3,7 @@
 # easySecurity
 
 
-# Table of Contents {#table-of-contents .TOC-Heading}
+# Summary
 
 [Introdução 2](#introdução)
 

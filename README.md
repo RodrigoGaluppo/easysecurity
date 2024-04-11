@@ -1,421 +1,237 @@
-
-
 # easySecurity
 
+## **Demo**
+
+https://youtube.com/shorts/qkP3xWPcPmo
 
 # Summary
 
-[Introdução 2](#introdução)
+[Introduction 2](#Introduction)
 
-[Descrição 5](#descrição)
+[Description 5](#Description)
 
-[Explicação dos componentes: 5](#explicação-dos-componentes)
+[Explanation of Components: 5](#Components)
 
-[Fluxo de execução do projeto 10](#fluxo-de-execução-do-projeto)
+[Project Execution Flow 10](#project-execution-flow)
 
-[Esquema do Projeto 11](#esquema-do-projeto)
+[Project Scheme 11](#project-scheme)
 
-[Montagem dos componentes e do projeto
-11](#montagem-dos-componentes-e-do-projeto)
+[Assembly of Components and Project
+11](#assembly-of-components-and-project)
 
-[Como usar a aplicação 12](#como-usar-a-aplicação)
+[How to Use the Application 12](#how-to-use-the-application)
 
-[Código das aplicações 16](#código-das-aplicações)
+[Application Codes 16](#application-codes)
 
-[Testes 32](#testes)
+[Tests 32](#tests)
 
-[Condicionalismos 35](#condicionalismos)
+[Constraints 35](#constraints)
 
-[Conclusão 36](#conclusão)
+[Conclusion 36](#conclusion)
 
-[Bibliografia 36](#bibliografia)
+[Bibliography 36](#bibliography)
 
-## **Introdução**
+## **Introduction**
 
-Este é um trabalho realizado no âmbito da disciplina de Arquitetura de
-Computadores e tem o objetivo de ser um projeto de conclusão da matéria
-de programação de microcontroladores, onde o autor mostrará as
-competências adquiridas em um projeto próprio de uso real.
+This project was carried out within the scope of the Computer Architecture discipline and aims to be a final project for the microcontroller programming subject, where the author will demonstrate the competencies acquired in a real-world project.
 
-O "easySecurity" é um sistema de segurança constituído por duas câmaras,
-que com deteção facial detetam faces humanas e tiram fotos das mesmas.
-Estas fotos são armazenadas em um diretório no disco e podem ser
-acessadas posteriormente.
+"easySecurity" is a security system consisting of two cameras that, with facial detection, detect human faces and take photos of them. These photos are stored in a directory on the disk and can be accessed later.
 
-O sistema tem também uma aplicação web própria e uma aplicação servidor
-que faz o stream do video em tempo real e onde o utilizador pode
-controlar as câmaras de forma remota.
+The system also has its own web application and a server application that streams the video in real-time, where the user can remotely control the cameras.
 
-Dentre os componentes do projeto estão:
+Among the project components are:
 
-\- 1x RaspberryPi
+- 1x RaspberryPi
+- 2x USB Cameras
+- 1x Mini Breadboard
+- 1x Arduino Uno
+- Power cables
+- 2x Servo Motors
+- 1x Presence Sensor
 
-\- 2x Cameras USB
+The security cameras are connected to the RaspberryPi, which in turn is connected to the Arduino Uno, serving as an interface for the RaspberryPi and the motors that move the cameras and the presence sensor.
 
-\- 1x Breadboard mini
+The web application and the component control and streaming server are on the RaspberryPi.
 
-\- 1x Arduino Uno
+The web application server that streams the video and receives commands from the client application was developed with Python using the FlaskAPI library and the PyFirmata library to control the Arduino with the Raspberry Pi.
 
-\- Cabos de energia
+For data persistence, the SqLite database is used because it is a lighter database and used for simpler applications.
 
-\- 2x Motores servo
+The client application was developed with JavaScript using ReactJs and makes asynchronous requests to the server to receive the video stream and to transmit client commands to the server.
 
-\- 1x Sensor de Presença
+## **Description**
 
-As câmaras de segurança são ligadas na RaspberryPi que por sua vez está
-ligada no Arduino Uno que serve como uma interface para a RaspberryPi e
-os motores que movimentam as câmaras e o sensor de presença.
-
-A aplicação web e o servidor de stream e controle dos componentes estão
-na raspberryPi.
-
-O servidor web da aplicação que faz a transmissão do video e recebe os
-comandos da aplicação cliente foi desenvolvido com Python usando a
-biblioteca FlaskAPI e a biblioteca PyFirmata para controlar o arduino
-com a Raspberry Pi.
-
-Para a persistência de dados é usado o banco de dados SqLite por ser um
-abnco de dados mais leve e usado para aplicações mais simples.
-
-A aplicação cliente foi desenvolvida com JavaScript usando ReactJs e faz
-requisições assíncronas para o servidor para receber a transmissão do
-vídeo e para transmitir os comandos do cliente ao servidor.
-
-## **Descrição**
-
-### Explicação dos componentes:
+### Explanation of Components:
 
 #### **RaspberryPi**
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/f1b060e4-b088-4f9a-a45b-ebe12235e9e5)
 
-A RaspberryPi é um microcomputador completo, com todos os componentes em
-uma única placa. Nela há processador, placa de vídeo, entradas USB, HDMI
-tudo integrado.
+The RaspberryPi is a complete microcomputer, with all components on a single board. It includes a processor, graphics card, USB ports, HDMI all integrated.
 
-A RaspberryPi pode ser usada como um computador pessoal ou até mesmo
-servidor, por isso foi escolhida para fazer o processamento do vídeo e
-ser o host do servidor e da aplicação web do projeto.
+The RaspberryPi can be used as a personal computer or even a server, which is why it was chosen to process the video and host the project's server and web application.
 
-#### **Camera USB**
+#### **USB Camera**
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/cc99a172-70eb-4862-a654-4e77ac2738e7)
 
-As câmaras usadas no projeto são duas câmaras simples de uso pessoal,
-com conectores USB que são usadas para transmitir a imagem do sistema de
-segurança.
+The cameras used in the project are two simple personal use cameras, with USB connectors used to transmit the image from the security system.
 
-#### **BreadBoard Mini**
+#### **Mini BreadBoard**
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/a4438d17-b8e0-4fd9-bbea-58431407aa6a)
 
-As breadboards ou placas de ensaio são placas com furos e conexões
-condutoras, usadas para fazer a montagem de projetos sem a necessidade
-de soldar os fios.
+Breadboards or prototype boards are boards with holes and conductive connections, used to assemble projects without the need for soldering wires.
 
 #### **Arduino**
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/df0f6cb6-4040-4553-8222-1e969e5f6915)
 
-O arduino é uma plataforma de prototipagem eletrónica criada em 2005,
-com a ideia de promover o desenvolvimento de controlo de sistemas
-eletrónicos por meio da programação com um baixo custo.
+Arduino is an electronic prototyping platform created in 2005, with the idea of promoting the development of electronic system control through programming at a low cost.
 
-Com o arduino é possível enviar e receber informações de sistemas
-eletrónicos bem como programar funcionalidades dos mesmos.
+With Arduino, it is possible to send and receive information from electronic systems as well as program their functionalities.
 
-O arduino será usado no projeto como uma interface entre a RaspberryPi e
-os componentes, permitindo o controle dos mesmos pela RaspberryPi.
+Arduino will be used in the project as an interface between the RaspberryPi and the components, allowing their control by the RaspberryPi.
 
-#### **Cabos de Energia**
+#### **Power Cables**
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/0c5a68ac-812e-4ca9-8134-cee9e06e0f1d)
 
-São cabos usados para transmitir energia das portas do Arduino aos
-componentes.
+These are cables used to transmit power from the Arduino ports to the components.
 
-#### **Motores Servo**
+#### **Servo Motors**
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b469fc62-cf03-406e-8bd1-4025e53fd79b)
 
-São motores usados para realizar movimentos rotacionais, que podem ser
-programáveis com o Arduino.
+They are motors used to perform rotational movements, which can be programmable with Arduino.
 
-Serão usados no projeto para mover as camaras automaticamente ou com
-comandos do utilizador.
+They will be used in the project to move the cameras automatically or with user commands.
 
-#### **Sensor de Presença**
+#### **Presence Sensor**
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/e6283f4d-acac-44fd-b4e9-2625db97b6f9)
 
-Serão usados no projeto para mover as camaras automaticamente ou com
-comandos do utilizador.
+They will be used in the project to move the cameras automatically or with user commands.
 
-### Fluxo de execução do projeto
+### Project Execution Flow
 
-Primeiro de tudo o utilizador acede a aplicação web cliente com um
-navegador e logo em seguida a aplicação web tenta uma conexão com o
-servidor. Em caso de sucesso é apresentada uma tela de controle ao
-utilizador onde ele pode mover as duas cameras para direita ou esquerda
-e ver a sua transmissão de video em tempo real.
+First of all, the user accesses the web client application with a browser and then the web application attempts a connection to the server. If successful, a control screen is presented to the user where they can move the two cameras to the right or left and see their real-time video transmission.
 
-Se o utilizador quiser ele pode também ver as fotos salvas pelas
-cameras.
+If the user wishes, they can also view the photos saved by the cameras.
 
-Para cada botão do utilizador é feito um pedido assíncrono ao servidor
-que responderá baseado nos pedidos.
+For each user button, an asynchronous request is made to the server, which will respond based on the requests.
 
-O servidor na RaspberryPi pode atuar de duas formas, no modo User onde
-ele basicamente responde as chamadas do utilizador pela aplicação e o
-modo autónomo onde ele usa o sensor de presença para detetar quando há
-alguém por perto, se houver ele moverá as camaras em 180 graus uma vez.
+The server on the RaspberryPi can act in two ways: in User mode, where it basically responds to user calls through the application, and in autonomous mode where it uses the presence sensor to detect when someone is nearby, if there is it will move the cameras 180 degrees once.
 
-Se for detetada uma face humana em ambos os casos o servidor tira uma
-foto e a salva num diretório próprio, guardando sua referência na base
-de dados onde poderá ser posteriormente acessada pelo utilizador pela
-aplicação cliente.
+If a human face is detected in both cases, the server takes a photo and saves it in its own directory, storing its reference in the database where it can be later accessed by the user through the client application.
 
-### Esquema do Projeto
+### Project Scheme
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b2829e6a-55ce-497b-bc98-5aca1572c1b0)
 
-### Montagem dos componentes e do projeto
+### Assembly of Components and Project
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/f1181cb5-0e97-412a-9798-ec6c3a68ff47)
 
--   1 Montar a estrutura base e rotatória das duas camaras
+1. Assemble the base and rotary structure of the two cameras.
+2. Place the two cameras in their respective positions.
+3. Connect the USB cables of the cameras to the RaspberryPi.
+4. Place a breadboard between the camera structures.
+5. Connect the Arduino to the Raspberry Pi.
+6. Connect the servo wires to the Arduino via the breadboard and the PIR sensor wires.
 
--   2 colocar as duas camaras nas respetivas posições
-
--   3 conectar os cabos USB das camaras na raspberryPi
-
--   4 colar uma breadboard entre as estruturas das camaras
-
--   5 conectar o arduino na raspberry Pi
-
--   6 ligar os fios dos servos no arduino pela breadboard e os fios do
-    sensor PIR
-
-![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/18ccd788-8338-4644-ad1d-7da2ab50875d)
-
-### Como usar a aplicação
+### How to Use the Application
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/58dc8f40-8e84-4a63-838b-e5958978d73a)
 
-Uma vez que tudo está montado, é preciso aceder a linha de comando da
-RaspberryPi para executar o arquivo "app.py" e carregar o servidor da
-aplicação.
+Once everything is assembled, access the command line of the RaspberryPi to execute the "app.py" file and load the application server.
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/22da7c0c-e80f-4751-98b7-1cdb84f8cef4)
 
-
-Depois deve-se aceder ao terminal da máquina cliente e executar o
-comando "yarn start" no diretório do projeto
+Then access the client machine's terminal and execute the command "yarn start" in the project directory.
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b755c71e-afe3-4bd5-b159-d7b990f9fbcf)
 
-
-Então é carregada a aplicação cliente no browser. Para mover a camara
-basta clicar nos botões com a respetiva direção e para aceder as fotos
-da camara basta clicar no botão "Images". E assim que é detetada uma
-face, é salva uma foto.
+Then the client application is loaded in the browser. To move the camera, simply click on the buttons with the respective direction, and to access the camera photos, click on the "Images" button. Once a human face is detected, a photo is saved.
 
 ![image](https://github.com/RodrigoGaluppo/easysecurity/assets/68329584/b43336e2-9b71-440a-b116-94e4e579802a)
 
+The photos are then displayed in a list and can be viewed by clicking on their link.
 
-As fotos então são mostradas em uma lista e é possível vê-las clicando
-em seu link.
+### Application Codes
 
-### Código das aplicações
+#### **Client Application**
 
-#### **Aplicação cliente**
+The application follows the standard format of applications created with the ReactJs framework, as the recommended structure was followed by the documentation itself, using the cli with the command "npx create-react-app\".
 
-A aplicação segue o formato padrão de aplicações criadas com o framework
-ReactJs, uma vez que foi seguida a estrutura recomendada pela própria
-documentação, usando a cli com o comando "npx create-react-app\".
+In the public directory are the static files and the main HTML file that will load the JavaScript files, which have the .ts extension because they are from a language that extends JavaScript, TypeScript, which allows explicit data type definition.
 
-![Uploading image.png…]()
+In the index.html file, there is only a blank html page that invokes the JavaScript files to dynamically build the page and the components.
 
-Sendo que nos diretório public estão os arquivos estáticos e o html
-principal que carregará os arquivos JavaScript que estão com a extensão
-.ts por serem de uma extensão a linguagem JavaScript, o TypeScript, que
-permite a definição de tipos de dados de forma explicita.
+In the "src" directory is all the code created by me.
 
-![](media/image17.png){width="6.808501749781278in"
-height="3.3947397200349956in"}
+In the "pages" directory are the directories of the pages that the application will have, the pages have their name in the directory and inside is the respective file with the page component and its style file.
 
-No arquivo index.html só há uma página html em branco que invoca os
-arquivos JavaScript para construir dinamicamente a página e os
-componentes.
+On the Home page, in its "index" file, is the definition of its component, with initial configuration for WebSocket communication with the server and the definition of the functions that send signals to move the cameras.
 
-No diretório "src" está todo o código criado por mim
+In the Image page is the definition of the Images component, where the images saved by the camera will be loaded. There is also the definition of the function that is called when the page loads to fetch the images from the server.
 
-No diretório "pages" estão dos diretórios das páginas que a aplicação
-vai ter, as páginas têm o seu nome no diretório e dentro está o
-respetivo arquivo com o componente da página e o seu arquivo de estilo.
+In the styles directory, there is the global style of the application, which is applied to all pages.
 
-Na página Home em seu arquivo "index" está a definição do seu
-componente, com configuração inicial para a comunicação via WebSocket
-com o servidor e a definição das funções que enviam sinais para a
-movimentação das camaras
+In the services directory is the file with the base configurations for communication with other applications.
 
-![](media/image18.png){width="6.669444444444444in"
-height="5.5022911198600175in"}
+#### **Server Application**
 
-![](media/image19.png){width="5.821788057742782in"
-height="5.958333333333333in"}
+All the code of the server application was made directly on the RaspberryPi and was done with Python, using the Flask framework to create a REST API that communicates easily with the client.
 
-Na página Imagem está a definição do componente Images da mesma, onde
-serão carregadas as imagens salvas pela camara. Há também a definição da
-função que é chamada quando a página carrega para buscar as imagens ao
-servidor.
+The application follows the following directory structure:
 
-![](media/image20.png){width="6.068880139982502in"
-height="7.645833333333333in"}
+In the "models" folder is the definition of the data class of the photos table saved in the database, which is used to work in the program and to indicate to Flask the characteristics of the table to be generated in SqLite.
 
-![](media/image21.png){width="6.132812773403325in" height="6.25in"}
+The class definition is made to present the fields used directly in the table of the database, and the methods are methods used in the program later to handle references to taken photos.
 
-No diretório styles há o estilo global da aplicação, que é aplicado em
-todas as páginas
+In the "static" folder, there is a folder called "images" where the photos are saved with the name containing the millisecond it was saved and a unique ID generated by the program. This name is saved in the database, and thus a reference is made so that it can be accessed later by following the path of this static files folder of the server.
 
-![](media/image22.png){width="4.21875in" height="5.0in"}
+In the "app.py" file are the general configurations of the application and the response code for each call to the specified route, following the structure of a "REST API".
 
-No diretório services está o arquivo com as configurações base para
-comunicação com outras aplicações.
+The application uses two communication protocols with the client: the WebSocket protocol for faster communication with direct connection, such as in camera movements, and the Http protocol to respond to requests for saved photos or video streaming.
 
-![](media/image23.png){width="3.8125in" height="1.625in"}
+In the "Cam.py" file is the definition of the "Cam" class where the used facial detection model is loaded (which is a model that comes with the CV2 library, used to work with object and people detection with Python), the face detection function in real-time video, and the functions to move the servo motors that are controlled by the PyFirmata library.
 
-#### **Aplicação servidor**
+In the "PIR.py" file is the code to move the motors automatically if a person is detected with the presence sensor.
 
-Todo o código da aplicação servidor foi feito diretamente na raspberrypi
-e foi feito com python, usando o framework Flask para criar uma api rest
-que se comunica facilmente com o cliente.
+### Tests
 
-A aplicação segue a seguinte estrutura de diretórios:
+First, load the "app.py" file to start the server, connected via ssh.
 
-![](media/image24.png){width="2.8833617672790903in"
-height="3.2604166666666665in"}
+Then load the web client application.
 
-Na pasta "models" está a definição da classe de dados da tabela de fotos
-salvas no banco de dados, que é usada para trabalhar no programa e para
-indicar ao Flask as características da tabela que deve ser gerada no
-SqLite.
+Then when I turn around, my face is easily detected by the application.
 
-![](media/image25.png){width="3.2906167979002623in"
-height="1.5416666666666667in"}
+The cameras also respond very well to user movements.
 
-![](media/image26.png){width="6.552083333333333in"
-height="5.719422572178478in"}
+The photos are also saved correctly.
 
-A definição da classe e feita de forma a apresentar os campos usados
-diretamente na tabela da base de dados, e os métodos são métodos usados
-no programa depois para tratar as referências fotos tiradas.
+## **Demo**
 
-![](media/image27.png){width="2.65625in" height="4.416666666666667in"}
+https://youtube.com/shorts/qkP3xWPcPmo
 
-Na pasta "static" há uma pasta chamada \"images\" onde são salvas as
-fotos com o nome contendo o milissegundo na qual foi salva e um ID único
-gerado pelo programa, este nome é salvo na base de dados e assim é feita
-uma referência para que possa ser acedida depois seguindo o caminho
-desta pasta de arquivos estáticos do servidor.
+## **Constraints**
 
-![](media/image28.png){width="6.949366797900263in" height="5.71875in"}
+In general, the construction of the project was easy thanks to prior planning of all the steps, but even so, there were small difficulties that were overcome.
 
-![](media/image29.png){width="5.352691382327209in"
-height="6.708333333333333in"}
+The first difficulty was to find out what "calibration" was necessary for the facial detection algorithm used, but after a series of consecutive tests, the ideal calibration for our usage situation of the model was found.
 
-![](media/image30.png){width="4.680339020122485in" height="5.6875in"}
+Another difficulty was in thinking about how the client application and the server application would communicate since real-time communication was necessary for camera movement. Initially, communication via the Https protocol was thought of (as done in traditional web applications and their APIs (Application Interfaces)), but because it does not offer the necessary immediacy, the WebSocket protocol was applied in the communication between the server and the client, as it is a relatively secure protocol and offers real-time communication easily and quickly to apply.
 
-No arquivo "app.py" estão as configurações gerais da aplicação e o
-código de resposta para cada chamada na rota especificada, seguindo a
-estrutura de uma "API REST".
+## **Conclusion**
 
-A aplicação usa dois protocolos de comunicação com o cliente, sendo o
-protocolo WebSocket para uma comunicação mais rápida e com conexão
-direta, como nos movimentos da camara e o protocolo Http para responder
-ao pedido de requisições de fotos salvas ou o stream do vídeo.
+With this work, it was possible to carry out a very interesting project that involves and integrates different areas of technology, such as Artificial Intelligence, Automation, and Web Development.
 
-![](media/image31.png){width="6.233766404199475in" height="6.0in"}
+The project was very comprehensive from start to finish and provided a very good level of practice and learning, being an idea implemented in reality as well as on paper. With this, it is also concluded that the work achieved all the proposed objectives and was an opportunity to improve programming concepts, following the principle of DIY (Do It Yourself).
 
-![](media/image32.png){width="5.40625in" height="6.02088145231846in"}
+## **Bibliography**
 
-No arquivo "Cam.py" está a definição da classe "Cam\" onde é carregado o
-modelo de deteção facial usado (que é um modelo que vem junto com a
-library CV2, usada para trabalhar com deteção de objetos e pessoas com
-python), a função de deteção de faces no vídeo em tempo real e as
-funções de movimento dos motores servo que são controlados pela
-biblioteca pyFirmata.
-
-![](media/image33.png){width="3.8296872265966755in" height="5.34375in"}
-
-No arquivo "PIR.py" está o código para mover os motores de forma
-automática caso seja detetada alguma pessoa com o sensor de presença.
-
-### Testes
-
-![](media/image34.png){width="5.512182852143482in"
-height="2.7101563867016623in"}
-
-Primeiro é carregado o arquivo "app.py" para iniciar o servidor,
-conectado via ssh.
-
-![](media/image35.png){width="6.90625in" height="3.7264971566054244in"}
-
-Depois é carregada a aplicação web cliente
-
-![](media/image36.png){width="5.0in" height="4.052083333333333in"}
-
-Então quando eu me viro para trás a minha face é detetada facilmente
-pela aplicação.
-
-![](media/image37.jpeg){width="5.0in" height="2.5208333333333335in"}
-
-As camaras também respondem muito bem aos movimentos do utilizador.
-
-![](media/image38.png){width="5.0in" height="2.34375in"}
-
-![](media/image39.png){width="5.0in" height="2.6041666666666665in"}
-
-As fotos também são salvas de forma correta.
-
-## **Condicionalismos**
-
-Em geral a construção do projeto foi fácil graças a um planejamento a
-priori de todas as etapas, porem mesmo assim foram encontradas pequenas
-dificuldades que acabaram por ser superadas.
-
-A primeira dificuldade foi a descobrir qual a "calibragem" necessária
-para o algoritmo de deteção facial usado, porem depois de uma série de
-testes seguidos, foi encontrada a calibragem ideal para a nossa situação
-de uso do modelo.
-
-Outra dificuldade foi em pensar em como a aplicação cliente e a
-aplicação servidor se comunicariam, já que era preciso uma comunicação
-em tempo real para a movimentação das camaras. Em primeira ideia foi
-pensada a comunicação por meio do protocolo Https (como é feito em
-aplicações web tradicionais e suas APIs (Application Interfaces)) más
-por não oferecer a instantaneidade necessária foi aplicado o protocolo
-WebSocket na comunicação entre o servidor e o cliente, por ser um
-protocolo relativamente seguro e que oferece comunicação em tempo real
-de forma fácil e rápida de se aplicar.
-
-## **Conclusão**
-
-Com este trabalho foi possível realizar um projeto muito interessante
-que envolve e integra diferentes áreas da tecnologia, como: Inteligência
-Artificial, Automação e Desenvolvimento Web.
-
-O projeto foi muito integro desde o início ao fim e possibilitou um
-nível muito bom de prática e aprendizagem, sendo uma ideia implantada na
-realidade tal como no papel, com isso conclui-se também que o trabalhou
-atingiu todos os objetivos propostos e foi uma oportunidade de aprimorar
-os conceitos de programação, seguindo o princípio do DIY (Do It Yourself
-(Faça você mesmo))
-
-## **Bibliografia**
-
-Uma vez que o projeto foi feito praticamente desde o início de forma
-autónoma não há muitas fontes, sendo unicamente as documentações das
-linguagens de programação e alguns materiais de vídeo
+Since the project was practically done from scratch autonomously, there are not many sources, only the documentation of the programming languages, and some video materials.
 
 <https://flask.palletsprojects.com/en/2.1.x/api/>
 
@@ -426,12 +242,8 @@ linguagens de programação e alguns materiais de vídeo
 [OpenCV Course - Full Tutorial with
 Python](https://www.youtube.com/watch?v=oXlwWbU8l2o)
 
-![](media/image40.jpg){width="6.47916447944007in" height="3.75in"}
-
 [Rotate your servo motor using arduino and python\'s
 pyfirmata.](https://www.youtube.com/watch?v=8j3Fo-16Rr8)
-
-![](media/image41.jpg){width="6.47916447944007in" height="3.75in"}
 
 <https://www.typescriptlang.org/docs/handbook/react.html>
 
